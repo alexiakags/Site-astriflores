@@ -9,10 +9,10 @@ function HomePage({ onNavigate }) {
     <>
       <SiteHeader onNavigate={onNavigate} />
 
-      <main id="inicio">
-        <section id="sobre" className="section-block site-container">
-          <div className="row hero-row">
-            <div className="col s12 l7 hero-copy">
+      <main id="inicio" className="home-page">
+        <section id="sobre" className="home-section site-container">
+          <div className="home-hero">
+            <div className="home-copy">
               <div className="eyebrow">
                 <span></span>
                 <strong>SOBRE NÓS</strong>
@@ -47,35 +47,19 @@ function HomePage({ onNavigate }) {
               </div>
             </div>
 
-            <div className="col s12 l5">
-              <div
-                className="media-placeholder"
-                aria-label="Espaço reservado para vídeo ou imagem da Astriflores"
-              >
-                <div className="placeholder-copy">
-                  Imagem / vídeo da Astriflores
-                </div>
-
-                <button
-                  className="play-button"
-                  type="button"
-                  aria-label="Reproduzir vídeo"
-                >
-                  <i className="material-icons">play_arrow</i>
-                </button>
-              </div>
+            <div className="media-panel hero-panel" aria-label="Imagem da Astriflores">
+              <button className="play-button" type="button" aria-label="Reproduzir vídeo">
+                <i className="material-icons">play_arrow</i>
+              </button>
             </div>
           </div>
         </section>
 
         <section id="historia" className="history-section site-container">
-          <div className="section-title">
-            <h2>Nossa História</h2>
-            <span></span>
-          </div>
+          <h2 className="history-title">Nossa História</h2>
 
-          <div className="row history-row">
-            <div className="col s12 l7 history-copy">
+          <div className="history-block">
+            <div className="story-copy">
               <article>
                 <h3>Criação</h3>
 
@@ -93,24 +77,21 @@ function HomePage({ onNavigate }) {
 
                 <ul className="history-list">
                   <li>
-                    <strong>
-                      Primeiros anos (2008–2013):
-                    </strong>{' '}
+                    <strong>Primeiros anos (2008–2013):</strong>{' '}
                     Funcionava sob gestão compartilhada entre
-                    trabalhadores associados e funcionários
-                    públicos cedidos pela prefeitura. A usina
-                    recebia cerca de 7 toneladas diárias de
-                    resíduos sem separação prévia.
+                    trabalhadores associados e funcionários públicos
+                    cedidos pela prefeitura. A usina recebia cerca de
+                    7 toneladas diárias de resíduos sem separação
+                    prévia.
                   </li>
 
                   <li>
-                    <strong>Após 2014/2015:</strong> Em parceria
-                    com a Universidade Federal de Viçosa (UFV) e
+                    <strong>Após 2014/2015:</strong> Em parceria com
+                    a Universidade Federal de Viçosa (UFV) e
                     articulação com a prefeitura, rejeitos e lixo
                     orgânico passaram a ir direto para o aterro
                     municipal. A usina passou a receber apenas
-                    materiais recicláveis nas terças e
-                    quintas-feiras.
+                    materiais recicláveis nas terças e quintas-feiras.
                   </li>
                 </ul>
               </article>
@@ -126,23 +107,10 @@ function HomePage({ onNavigate }) {
               </article>
             </div>
 
-            <div className="col s12 l5">
-              <div
-                className="media-placeholder history-media"
-                aria-label="Espaço reservado para vídeo ou imagem da história da Astriflores"
-              >
-                <div className="placeholder-copy">
-                  Imagem / vídeo da história
-                </div>
-
-                <button
-                  className="play-button"
-                  type="button"
-                  aria-label="Reproduzir vídeo"
-                >
-                  <i className="material-icons">play_arrow</i>
-                </button>
-              </div>
+            <div className="media-panel history-panel" aria-label="Imagem da história da Astriflores">
+              <button className="play-button" type="button" aria-label="Reproduzir vídeo">
+                <i className="material-icons">play_arrow</i>
+              </button>
             </div>
           </div>
         </section>
