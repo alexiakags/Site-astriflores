@@ -1,0 +1,152 @@
+.pagina-detalhe-doacao {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.detalhe-doacao {
+  min-height: calc(100vh - 86px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.9fr);
+  align-items: center;
+  gap: 48px;
+  padding-top: 40px;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+}
+
+.detalhe-doacao-imagem {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detalhe-doacao-imagem img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+.detalhe-doacao-info {
+  color: #26352b;
+}
+
+.detalhe-doacao-info h1 {
+  margin: 0 0 20px;
+  color: #26352b;
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.detalhe-doacao-descricao,
+.detalhe-doacao-especificacao {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.detalhe-doacao-especificacao p {
+  margin: 0;
+}
+
+.detalhe-doacao-especificacao ul {
+  margin: 0 0 0 28px;
+  padding: 0;
+  list-style: disc;
+}
+
+.detalhe-doacao-especificacao li {
+  list-style-type: disc;
+}
+
+.detalhe-doacao-valor {
+  margin: 14px 0 8px;
+  text-align: center;
+  font-size: clamp(2.7rem, 6vw, 4.1rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.gerar-qr-btn {
+  display: block;
+  width: min(100%, 290px);
+  height: 82px;
+  margin: 12px auto 0;
+  border-radius: 22px;
+  background: #7a3c20;
+  color: #fff;
+  text-transform: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.gerar-qr-btn:hover,
+.gerar-qr-btn:focus {
+  background: #653017;
+  box-shadow: none;
+}
+
+.detalhe-nao-encontrado {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.detalhe-nao-encontrado h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.voltar-doacoes {
+  background: #7a3c20;
+  text-transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 992px) {
+  .detalhe-doacao {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 28px;
+    padding-top: 36px;
+  }
+
+  .detalhe-doacao-imagem img {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 650px) {
+  .detalhe-doacao {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+
+  .detalhe-doacao-imagem img {
+    max-height: 340px;
+  }
+
+  .detalhe-doacao-info h1 {
+    margin-bottom: 14px;
+  }
+
+  .detalhe-doacao-descricao,
+  .detalhe-doacao-especificacao {
+    font-size: 1rem;
+  }
+
+  .detalhe-doacao-valor {
+    margin-top: 20px;
+  }
+
+  .gerar-qr-btn {
+    height: 68px;
+  }
+}

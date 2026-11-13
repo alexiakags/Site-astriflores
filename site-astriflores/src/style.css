@@ -13,11 +13,14 @@ body { margin: 0; color: #151515; font-family: Arial, Helvetica, sans-serif; bac
 
 .astriflores-nav { background: var(--green); height: 86px; line-height: 86px; box-shadow: none; }
 .astriflores-nav .nav-wrapper { height: 86px; }
-.brand-logo { display: flex !important; align-items: center; gap: 12px; height: 86px; font-weight: 700; font-size: 1.45rem !important; }
+.brand-logo { display: flex !important; align-items: center; gap: 12px; height: 86px; font-weight: 700; font-size: 1.45rem !important; background: transparent; border: 0; padding: 0; cursor: pointer; }
 .brand-logo img { width: 62px; height: 62px; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 18px; }
+.nav-links li { display: flex; align-items: center; }
 .nav-links a { font-size: 1rem; font-weight: 600; }
-.nav-links .doe-nav { color: #1e2d21; background: var(--cream); border: 2px solid #203324; border-radius: 30px; line-height: 46px; height: 50px; padding: 0 34px; margin-left: 52px; }
+.nav-links .doe-nav, .side-doe-btn { display: inline-flex; align-items: center; justify-content: center; color: #1e2d21; background: var(--cream); border: 2px solid #203324; border-radius: 30px; height: 50px; padding: 0 34px; margin-left: 52px; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1; text-decoration: none; cursor: pointer; box-sizing: border-box; }
+.nav-links .doe-nav:hover, .nav-links .doe-nav:focus, .side-doe-btn:hover, .side-doe-btn:focus { background: #eaf3e2; }
+.side-doe-btn { margin-left: 0; width: 100%; text-align: left; border-radius: 0; height: auto; line-height: 1.5; padding: 12px 32px; }
 
 .section-block { padding-top: 28px; }
 .hero-row, .history-row { display: flex; align-items: stretch; margin-bottom: 0; }
@@ -26,7 +29,7 @@ body { margin: 0; color: #151515; font-family: Arial, Helvetica, sans-serif; bac
 .eyebrow span { display: inline-block; width: 65px; height: 2px; background: var(--ink); }
 h1 { color: var(--dark-green); font-size: 2.7rem; line-height: 1.15; font-weight: 700; margin: 30px 0 22px; }
 .hero-copy p { font-size: 1rem; line-height: 1.65; text-align: justify; margin: 0; }
-.hero-actions { margin-top: 25px; display: flex; justify-content: space-between; gap: 20px; }
+.hero-actions { margin-top: 25px; display: flex; justify-content: center; align-items: center; gap: 20px; }
 .astri-btn { background: var(--brown); text-transform: none; box-shadow: none; border-radius: 3px; font-weight: 600; padding: 0 28px; }
 .astri-btn:hover, .astri-btn:focus { background: #653017; box-shadow: none; }
 
@@ -88,11 +91,13 @@ h1 { color: var(--dark-green); font-size: 2.7rem; line-height: 1.15; font-weight
 }
 
 .footer-content a {
-    color: inherit;
+    color: #fff;
     text-decoration: none;
 }
 
-.footer-content a:hover {
+.footer-content a:hover,
+.footer-content a:focus {
+    color: #fff;
     text-decoration: underline;
 }
 

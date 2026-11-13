@@ -1,81 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import Doacoes from './Doacoes.jsx';
+import DetalheDoacao from './DetalheDoacao.jsx';
+import SiteHeader from './SiteHeader.jsx';
+import SiteFooter from './SiteFooter.jsx';
 
-function App() {
-  const sidenavRef = useRef(null);
-
-  useEffect(() => {
-    if (!window.M || !sidenavRef.current) return;
-
-    const sidenav = window.M.Sidenav.init(sidenavRef.current);
-
-    return () => {
-      sidenav.destroy();
-    };
-  }, []);
-
+function HomePage({ onNavigate }) {
   return (
     <>
-      <header>
-        <nav className="astriflores-nav">
-          <div className="nav-wrapper site-container">
-            <a href="#inicio" className="brand-logo">
-              <img src="/assets/logo.svg" alt="Logo Astriflores" />
-              <span>Astriflores</span>
-            </a>
-
-            <a
-              href="#"
-              data-target="mobile-menu"
-              className="sidenav-trigger"
-              aria-label="Abrir menu"
-            >
-              <i className="material-icons">menu</i>
-            </a>
-
-            <ul className="right hide-on-med-and-down nav-links">
-              <li>
-                <a href="#sobre">Sobre nós</a>
-              </li>
-              <li>
-                <a href="#historia">Nossa História</a>
-              </li>
-              <li>
-                <a href="#contato">Contato</a>
-              </li>
-              <li>
-                <a href="/doacoes.html" className="doe-nav">
-                  Doe
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-        <ul
-          className="sidenav"
-          id="mobile-menu"
-          ref={sidenavRef}
-        >
-          <li>
-            <a href="#sobre">Sobre nós</a>
-          </li>
-          <li>
-            <a href="#historia">Nossa História</a>
-          </li>
-          <li>
-            <a href="#contato">Contato</a>
-          </li>
-          <li>
-            <a href="/doacoes.html">Doe</a>
-          </li>
-        </ul>
-      </header>
+      <SiteHeader onNavigate={onNavigate} />
 
       <main id="inicio">
-        <section
-          id="sobre"
-          className="section-block site-container"
-        >
+        <section id="sobre" className="section-block site-container">
           <div className="row hero-row">
             <div className="col s12 l7 hero-copy">
               <div className="eyebrow">
@@ -106,19 +41,9 @@ function App() {
               </p>
 
               <div className="hero-actions">
-                <a
-                  className="btn astri-btn"
-                  href="#historia"
-                >
-                  Nossa História
-                </a>
-
-                <a
-                  className="btn astri-btn"
-                  href="/doacoes.html"
-                >
-                  Ajude a nossa associação
-                </a>
+                <button type="button" className="btn astri-btn" onClick={() => onNavigate('/doacoes')}>
+                  Ajude nossa associação
+                </button>
               </div>
             </div>
 
@@ -136,19 +61,14 @@ function App() {
                   type="button"
                   aria-label="Reproduzir vídeo"
                 >
-                  <i className="material-icons">
-                    play_arrow
-                  </i>
+                  <i className="material-icons">play_arrow</i>
                 </button>
               </div>
             </div>
           </div>
         </section>
 
-        <section
-          id="historia"
-          className="history-section site-container"
-        >
+        <section id="historia" className="history-section site-container">
           <div className="section-title">
             <h2>Nossa História</h2>
             <span></span>
@@ -220,9 +140,7 @@ function App() {
                   type="button"
                   aria-label="Reproduzir vídeo"
                 >
-                  <i className="material-icons">
-                    play_arrow
-                  </i>
+                  <i className="material-icons">play_arrow</i>
                 </button>
               </div>
             </div>
@@ -230,41 +148,36 @@ function App() {
         </section>
       </main>
 
-      <footer
-        id="contato"
-        className="page-footer astriflores-footer"
-      >
-        <div className="site-container footer-content">
-          <h3>Contato</h3>
-
-          <p>
-            <i className="material-icons">mail_outline</i>
-            <a href="mailto:associacao.astriflores@gmail.com">
-              associacao.astriflores@gmail.com
-            </a>
-          </p>
-
-          <p>
-            <i className="material-icons">phone_iphone</i>
-            <a href="tel:+5531999174714">
-              (31) 99917-4714
-            </a>
-          </p>
-
-          <p>
-            <i className="material-icons">location_on</i>
-            R. Chicó Alves - Bairro Pernambuco, Florestal - MG,
-            35690-000
-          </p>
-
-          <p>
-            <i className="material-icons">photo_camera</i>
-            @aastriflores
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
+}
+
+function App() {
+  const [currentPath, setCurrentPath] = useState(() => window.location.pathname || '/');
+
+  useEffect(() => {
+    const handlePopState = () => setCurrentPath(window.location.pathname || '/');
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateTo = (path) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    window.scrollTo(0, 0);
+  };
+
+  if (currentPath.startsWith('/doacoes/')) {
+    const itemId = currentPath.split('/')[2];
+    return <DetalheDoacao itemId={itemId} onNavigate={navigateTo} />;
+  }
+
+  if (currentPath === '/doacoes') {
+    return <Doacoes onNavigate={navigateTo} />;
+  }
+
+  return <HomePage onNavigate={navigateTo} />;
 }
 
 export default App;
